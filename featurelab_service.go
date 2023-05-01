@@ -61,7 +61,7 @@ func toGrpcError(error *featurelab.Error) error {
 	return status.Errorf(toGrpcStatusCode(error.Code), error.Error())
 }
 
-func toGrpcStatusCode(code uint32) codes.Code {
+func toGrpcStatusCode(code featurelab.ErrorType) codes.Code {
 	switch code {
 	case featurelab.ErrBadRequest:
 		return codes.InvalidArgument
