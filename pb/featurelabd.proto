@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/torresjeff/featurelabd/pb";
+
+message GetTreatmentRequest {
+  string app = 1;
+  string feature = 2;
+  string criteria = 3;
+}
+
+message GetTreatmentResponse {
+  string treatment = 1;
+}
+
+message FetchFeatureRequest {
+  string app = 1;
+  string feature = 2;
+}
+
+message FetchFeatureResponse {
+  Feature feature = 1;
+}
+
+message FetchFeaturesRequest {
+  string app = 1;
+}
+
+message FetchFeaturesResponse {
+  repeated Feature features = 1;
+}
+
+message Feature {
+  string app = 1;
+  string name = 2;
+  repeated TreatmentAllocation allocations = 3;
+}
+
+message TreatmentAllocation {
+  string treatment = 1;
+  uint32 weight = 2;
+}
+
+service FeatureLab {
+  rpc GetTreatment(GetTreatmentRequest) returns (GetTreatmentResponse) {}
+  rpc FetchFeature(FetchFeatureRequest) returns (FetchFeatureResponse) {}
+  rpc FetchFeatures(FetchFeaturesRequest) returns (FetchFeaturesResponse) {}
+}
