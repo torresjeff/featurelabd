@@ -11,6 +11,8 @@ github.com/torresjeff/go-feature-lab v0.0.0-20230501192237-03cc0cf083d2 h1:zz7M5
 github.com/torresjeff/go-feature-lab v0.0.0-20230501192237-03cc0cf083d2/go.mod h1:2EhkIBs2jgWcd3MnY7Fs0pp22/MNSK0n/jAZT73wQmM=
 github.com/torresjeff/go-feature-lab v0.0.0-20230501214049-3a13b19ff20b h1:4qozl3jdK1870uOf0tfcKGJ6J05B3GRxOV0Zv745Zys=
 github.com/torresjeff/go-feature-lab v0.0.0-20230501214049-3a13b19ff20b/go.mod h1:JTWeNniz5vevGq3aNoGnZVo49X3KppsAtERYOSB39uo=
+github.com/torresjeff/go-feature-lab v0.0.0-20230502000036-b329626ae118 h1:OPIuktT1cewhC99aqmlaRI+x41858VBCTudPD9DNqRQ=
+github.com/torresjeff/go-feature-lab v0.0.0-20230502000036-b329626ae118/go.mod h1:UcoITHaTLXLnEO6M3rlp5BIeelO/sdqSVYe2sSYpVbE=
 golang.org/x/net v0.0.0-20211029224645-99673261e6eb/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
 golang.org/x/net v0.9.0 h1:aWJ/m6xSmxWBx+V0XRHTlrYrPG56jKsLdTFmsSsCzOM=
 golang.org/x/net v0.9.0/go.mod h1:d48xBJpPfHeWQsugry2m+kC02ZBRGRgulfHnEXEuWns=
