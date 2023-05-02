@@ -11,6 +11,9 @@ type CacheableFeatureLabClient struct {
 	featureLabClient  featurelab.FeatureLab
 	treatmentAssigner featurelab.TreatmentAssigner
 	featureCache      FeatureCache
+
+	// Keeps track of all the apps that have been fetched from the backend service
+	apps map[string]bool
 }
 
 // GetTreatment calculates the treatment that is assigned for a criteria in a particular Feature stored in the cache.
@@ -42,6 +45,8 @@ func (f *CacheableFeatureLabClient) FetchFeatures(app string) ([]featurelab.Feat
 
 	f.featureCache.PutFeatures(features)
 
+	f.apps[app] = true
+
 	log.Printf("Finished fetching features and cached features for app: %s\n", app)
 
 	return features, nil
@@ -57,13 +62,26 @@ func (f *CacheableFeatureLabClient) FetchFeature(app string, featureName string)
 
 	f.featureCache.PutFeature(app, featureName, feature)
 
+	f.apps[app] = true
+
 	return feature, nil
 }
 
-func NewCacheableFeatureLabClient(featureLabHost string, ttl, cleanUpInterval time.Duration) featurelab.FeatureLab {
+func (f *CacheableFeatureLabClient) UpdateCache() *featurelab.Error {
+	for app, _ := range f.apps {
+		_, err := f.FetchFeatures(app)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func NewCacheableFeatureLabClient(featureLabHost string, ttl, cleanUpInterval time.Duration) *CacheableFeatureLabClient {
 	return &CacheableFeatureLabClient{
 		featureLabClient:  featurelab.NewFeatureLabClient(featureLabHost),
 		treatmentAssigner: featurelab.NewTreatmentAssigner(),
 		featureCache:      NewDefaultFeatureCache(ttl, cleanUpInterval),
+		apps:              make(map[string]bool),
 	}
 }
