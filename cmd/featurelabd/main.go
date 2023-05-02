@@ -13,6 +13,7 @@ import (
 )
 
 func main() {
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
 	var featureLabUrl string
 	var port uint
@@ -35,8 +36,7 @@ func main() {
 	pb.RegisterFeatureLabServer(grpcServer,
 		featurelabd.NewFeatureLabService(featurelabd.NewCacheableFeatureLabClient(featureLabUrl,
 			time.Duration(ttlMinutes)*time.Minute,
-			time.Duration(cleanUpIntervalMinutes)*time.Minute),
-			"FeatureLab", "Test"))
+			time.Duration(cleanUpIntervalMinutes)*time.Minute)))
 
 	reflection.Register(grpcServer)
 	log.Fatal(grpcServer.Serve(listener))

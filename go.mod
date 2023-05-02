@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/torresjeff/go-feature-lab v0.0.0-20230501192237-03cc0cf083d2
+	github.com/torresjeff/go-feature-lab v0.0.0-20230501214049-3a13b19ff20b
 	google.golang.org/grpc v1.54.0
 	google.golang.org/protobuf v1.30.0
 )
@@ -18,4 +18,4 @@ require (
 	google.golang.org/genproto v0.0.0-20230410155749-daa745c078e1 // indirect
 )
 
-replace github.com/torresjeff/go-feature-lab => ../go-feature-lab
+//replace github.com/torresjeff/go-feature-lab => ../go-feature-lab

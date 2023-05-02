@@ -97,17 +97,9 @@ func toGrpcTreatmentAllocations(featureAllocations []featurelab.FeatureAllocatio
 	return treatmentAllocations
 }
 
-func NewFeatureLabService(featureLabClient featurelab.FeatureLab, apps ...string) pb.FeatureLabServer {
+func NewFeatureLabService(featureLabClient featurelab.FeatureLab) pb.FeatureLabServer {
 	fls := &FeatureLabService{
 		featureLabClient: featureLabClient,
-	}
-
-	// Initial fetch of features to cache them
-	for _, app := range apps {
-		_, err := fls.featureLabClient.FetchFeatures(app)
-		if err != nil {
-			log.Printf("error fetching features for app %s: %s", app, err)
-		}
 	}
 
 	return fls
