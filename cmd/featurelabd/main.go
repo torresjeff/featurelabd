@@ -56,6 +56,9 @@ func main() {
 			}
 		}
 	}()
+	defer close(stop)
+	
 	reflection.Register(grpcServer)
 	log.Fatal(grpcServer.Serve(listener))
+
 }
