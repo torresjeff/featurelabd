@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/torresjeff/featurelabd"
+	"github.com/torresjeff/featurelabd/featurelabd"
 	"github.com/torresjeff/featurelabd/pb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -57,7 +57,7 @@ func main() {
 		}
 	}()
 	defer close(stop)
-	
+
 	reflection.Register(grpcServer)
 	log.Fatal(grpcServer.Serve(listener))
 
