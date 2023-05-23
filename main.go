@@ -23,7 +23,7 @@ func main() {
 	flag.StringVar(&featureLabUrl, "featureLabUrl", "http://localhost:3000", "the url of the Feature Lab Server. Default: http://localhost:3000")
 	flag.UintVar(&port, "port", 43743, "the port for the daemon to listen on. Default: 43743")
 	flag.UintVar(&ttlMinutes, "ttlMinutes", 10, "the ttl for the cache in minutes. The Feature Lab daemon will automatically fetch features at intervals specified by this argument. Default: 10")
-	flag.UintVar(&cleanUpIntervalMinutes, "cleanUpInterval", 30, "the interval to clean up the cache in minutes. Default: 30")
+	flag.UintVar(&cleanUpIntervalMinutes, "cleanUpInterval", 30, "the interval to clean up stale entries in the cache in minutes. Default: 30")
 	flag.Parse()
 
 	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", port))

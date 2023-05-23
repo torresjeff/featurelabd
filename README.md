@@ -1,6 +1,24 @@
 # featurelabd
 Daemon client for Feature Lab.
 
+## Running the daemon
+```bash
+# install featurelabd to the bin folder in GOPATH
+go install github.com/torresjeff/featurelabd 
+
+# Run featurelabd
+featurelabd 
+```
+
+Supported arguments for `featurelabd`:
+* `featureLabUrl`:  the URL of the Feature Lab Server. Default: http://localhost:3000
+* `port`: the port for the daemon to listen on. Default: 43743
+* `ttlMinutes`: the ttl for the cache in minutes. The Feature Lab daemon will automatically fetch features at intervals specified by this argument. Default: 10
+* `cleanUpInterval`: the interval to clean up stale entries in the cache in minutes. Default: 30
+
+Example:
+
+`$ featurelabd --featureLabUrl http://featurelab.com --port 5555 --ttlMinutes 20 --cleanUpInterval 15`
 
 ## Build
 In `featurelabpb` package:
